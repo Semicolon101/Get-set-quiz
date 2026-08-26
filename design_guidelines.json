@@ -1,0 +1,94 @@
+{
+  "theme_and_identity": {
+    "vibe": "Clean, uncluttered consumer app aesthetic — soft backgrounds, minimal iconography, no visual clutter.",
+    "archetype": "Pastel & Soft paired with 'Clay & Crisp' Neumorphism.",
+    "theme_mode": "light (enforced to match warm neutral base request)"
+  },
+  "typography": {
+    "headings": {
+      "family": "Cabinet Grotesk",
+      "weights": "700, 800, 900",
+      "usage": "Primary titles, quiz questions, scorecard results. Anti-pattern: Never use Inter or Roboto for headings."
+    },
+    "body": {
+      "family": "Satoshi",
+      "weights": "400, 500, 700",
+      "usage": "UI labels, MCQ options, descriptive text, table data."
+    },
+    "scale": {
+      "h1": "text-4xl sm:text-5xl tracking-tight leading-none",
+      "h2": "text-2xl sm:text-3xl tracking-tight",
+      "question_text": "text-2xl sm:text-4xl font-bold leading-tight tracking-tight",
+      "body": "text-base sm:text-lg leading-relaxed"
+    },
+    "setup": "Import via Fontshare in index.css: @import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700,900&f[]=satoshi@700,500,400&display=swap');"
+  },
+  "colors": {
+    "base": {
+      "background": "#F9F8F6",
+      "surface": "#FFFFFF",
+      "text_primary": "#1C1917",
+      "text_secondary": "#57534E",
+      "border": "rgba(0,0,0,0.06)"
+    },
+    "accents": {
+      "cyan": "#00F0FF",
+      "green": "#00FF81",
+      "amber": "#FFA900",
+      "orange": "#FF6800"
+    },
+    "usage_mapping": {
+      "login_screen": "Primary highlight: Amber (#FFA900). Use for focus rings, subtle glows, or dark button hover states.",
+      "quiz_engine": "Primary highlight: Cyan (#00F0FF). Use for progress bar fills, selected MCQ option borders.",
+      "scorecard": "Primary highlight: Green (#00FF81). Use for success metrics, score emphasis.",
+      "wait_screen": "Primary highlight: Orange (#FF6800). Use for lock icon accents, pulse animations.",
+      "admin_panel": "Monochrome base with Cyan highlights for active tabs/actions."
+    },
+    "contrast_warning": "CRITICAL: The requested accents are very bright. NEVER use them as text on light backgrounds or with white text. When using accents as backgrounds, text MUST be #1C1917. When used on dark buttons (bg-stone-900), accents can be used as text colors on hover."
+  },
+  "visual_enhancers": {
+    "surfaces": "Clay & Crisp technique: Surfaces (#FFFFFF) on base (#F9F8F6) must use a 1px solid border (border-black/5) combined with a soft, diffuse shadow (shadow-[0_8px_30px_rgb(0,0,0,0.04)]). No muddy grays.",
+    "buttons": "Pill-shaped (rounded-full). Default state: bg-stone-900 text-white. Hover state: bg-stone-800, with text changing to the screen's specific accent color.",
+    "mcq_cards": "Massive touch targets. p-6 or p-8, rounded-2xl. Default: bg-white border-black/5. Hover: -translate-y-1, subtle shadow. Active/Selected: 2px solid Cyan border with a subtle Cyan background tint (bg-[#00F0FF]/10)."
+  },
+  "layouts": {
+    "general": "Mobile-first, responsive. Generous spacing (p-8 to p-12).",
+    "quiz_view": "Center the active question card. Max-w-3xl. Top of screen should feature a thin, elegant progress bar (h-1 or h-2) tracking 1 to 5.",
+    "admin_view": "Dense Bento grid layout for stats, cleanly spaced table for participants. Full width but with max-w-7xl constraint and generous p-8 internal padding."
+  },
+  "motion": {
+    "micro_interactions": "MCQ options: scale 1.01 on hover, scale 0.98 on tap. Smooth 0.2s ease transitions.",
+    "page_transitions": "Use Framer Motion. Question Cards must slide in (x: 20, opacity: 0) and out gracefully.",
+    "score_reveal": "Animate the score counting up. The tier Emoji should pop in with a spring animation (scale: 0 to 1, bounce)."
+  },
+  "accessibility": {
+    "testing": "All interactive elements, inputs, and text reveals MUST include a `data-testid` attribute (e.g., `data-testid='login-submit-button'`, `data-testid='mcq-option-a'`).",
+    "focus": "Always use focus-visible with a 2px ring matching the screen's mapped accent color."
+  },
+  "media": {
+    "icons": "Use @phosphor-icons/react (Duotone or Regular weight). Keep iconography minimal.",
+    "score_emojis": "Use native OS emojis rendered massively (text-7xl+) for the scorecard tiers instead of complex imagery."
+  },
+  "component_rules": {
+    "forms": "Use Shadcn UI for inputs and forms, but customize to remove Vercel defaults. Inputs should be rounded-xl, bg-white, border-black/10, h-12 or h-14 for comfortable typing.",
+    "admin_table": "Use Shadcn Table. Flat design, no inner borders, generous row padding (py-4).",
+    "language_toggle": "Minimal pill toggle (USA / UK) placed discreetly in the top-right corner of the layout."
+  },
+  "instructions_to_main_agent": [
+    "Build the application using React (.jsx). Do not generate TypeScript.",
+    "Implement the single global session lock using a robust state or context mechanism. Show the 'wait screen' if locked.",
+    "Store the 100-question bank logically so it can be 'replaced' via the Admin Excel upload (mock or implement basic parse logic).",
+    "Apply the font setup in index.css exactly as specified.",
+    "Limit to the specific 4 accent colors. Follow the usage mapping exactly."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic outputs ('AI slop'). Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Don't make generic centered layouts or uniform styling. Create depth with 'Clay & Crisp' borders and soft shadows.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "You MUST NOT apply universal transition (e.g., `transition: all`). This breaks transforms. Target transitions explicitly.",
+    "You MUST NOT center align the app container. Do not add `.App { text-align: center; }` in CSS.",
+    "Use `sonner` for toast notifications.",
+    "NEVER use fully transparent backgrounds on elements sitting over content.",
+    "ALWAYS include `data-testid` for automated testing hooks on all interactables and significant UI elements."
+  ]
+}

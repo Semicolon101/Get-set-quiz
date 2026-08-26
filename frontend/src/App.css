@@ -1,0 +1,2 @@
+/* QuizSpark app-level tweaks. Do NOT center-align the app container. */
+.App { min-height: 100vh; }
