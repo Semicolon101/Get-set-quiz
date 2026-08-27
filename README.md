@@ -1,4 +1,4 @@
-# SolzQuiz
+# Get-set-quiz
 
 A lightweight quiz application with a React frontend and a FastAPI backend (MongoDB). Designed for running quizzes, collecting answers, and reviewing results via an admin interface.
 
@@ -16,7 +16,7 @@ Key goals:
   - Backend: FastAPI (async) + Motor (async MongoDB client)
 - **Notable libraries:**
   - Frontend: Tailwind, CRACO, shadcn/react UI components
-  - Backend: fastapi, motor, pydantic, python-dotenv, openpyxl (for bulk upload)
+  - Backend: FastAPI, motor, pydantic, python-dotenv, openpyxl (for bulk upload)
 
 ---
 
@@ -36,13 +36,13 @@ Key goals:
 
 How it fits together:
 - Frontend (frontend/) is a React single-page app that calls the backend API.
-- Backend (backend/) is a FastAPI app (backend/server.py) that persists sessions, participants and question data in MongoDB. The backend exposes endpoints for signing in, submitting answers, session status, and several admin endpoints for managing participants and uploading questions.
+- Backend (backend/) is a FastAPI app (backend/server.py) that persists sessions, participants, and question data in MongoDB. The backend exposes endpoints for signing in, submitting answers, session status, and several admin endpoints for managing participants and uploading questions.
 
 ---
 
 ## Quick start — prerequisites
-- Node.js (recommend 18+)
-- Python (recommend 3.10+)
+- Node.js (recommended 18+)
+- Python (recommended 3.10+)
 - MongoDB instance (local or remote)
 - Git
 
@@ -50,8 +50,8 @@ How it fits together:
 
 ## Environment variables
 Create a `.env` file in `backend/` (or set env vars in your environment). Required:
-- MONGO_URL — MongoDB connection string (e.g. mongodb://localhost:27017)
-- DB_NAME — database name to use (e.g. solzquiz)
+- MONGO_URL — MongoDB connection string (e.g., mongodb://localhost:27017)
+- DB_NAME — database name to use (e.g., solzquiz)
 
 Optional:
 - ADMIN_PASSWORD — admin login password (default: `admin123`)
@@ -132,7 +132,7 @@ There are two common ways to load questions:
 - POST /session/close   — close the active session (admin)
 - POST /admin/login     — admin authentication (password)
 - GET /admin/participants — list participants (admin)
-- POST /admin/questions/upload — upload `.xlsx` file with questions (admin)
+- POST /admin/questions/upload — upload an `.xlsx` file with questions (admin)
 
 For full request/response shapes consult the OpenAPI docs at /docs when the server is running.
 
@@ -156,7 +156,7 @@ For full request/response shapes consult the OpenAPI docs at /docs when the serv
 
 ## Useful commands
 - Backend lint / formatting: run your usual tools (black / isort / flake8) in `backend/`.
-- Frontend: `npm run build` to create production build.
+- Frontend: `npm run build` to create a production build.
 
 ---
 
